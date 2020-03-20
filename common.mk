@@ -18,6 +18,9 @@ LOCAL_PATH := device/samsung/universal7880-common
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# Exclude AudioFX
+TARGET_EXCLUDES_AUDIOFX := true
+
 # Flat device tree for boot image
 PRODUCT_HOST_PACKAGES += \
     dtbhtoolExynos
