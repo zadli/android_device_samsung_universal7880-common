@@ -9,6 +9,8 @@
 	<pcmdai baseband_link="2" />
 	<pcmdai bluetooth_link="3" />
 	<pcmdai fmradio_link="4" />
+	<pcmdai InputRate="44100" />
+	<pcmdai OutputRate="44100" />
 
 	<!-- Reset configurations -->
 	<ctl name="AudioMixer Mixer En" value="Off" />
