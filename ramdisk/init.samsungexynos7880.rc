@@ -452,7 +452,7 @@ on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/device/extldo
 
 # Support DM logging
-    chmod 0770 /system/bin/dmd
+    chmod 0770 /vendor/bin/dmd
 
 # MTP device permission
     chmod 0660 /dev/usb_mtp_gadget
@@ -470,10 +470,10 @@ on boot
     chown system system /dev/ttyGS3
 
 # Support Virtual Com
-    chmod 0770 /system/bin/vcd
+    chmod 0770 /vendor/bin/vcd
 
 # Support AP/CP log dump
-    chmod 0770 /system/bin/sced
+    chmod 0770 /vendor/bin/sced
 
 # Permission for UART SWITCH
     chmod 0660 /sys/class/sec/switch/uart_sel
@@ -494,7 +494,7 @@ on boot
     chmod 0775 /dev/socket
 
 # New IMS Stack
-service imsd /system/bin/imsd
+service imsd /vendor/bin/imsd
     class main
     socket imsd stream 0660 system system
     user root
@@ -582,7 +582,7 @@ on fs
     chown system system /dev/network_throughput
 
 # ARGOSD
-service argos-daemon /system/bin/argosd
+service argos-daemon /vendor/bin/argosd
     class main
     user system
     group system radio
@@ -597,13 +597,13 @@ service argos-daemon /system/bin/argosd
 #    class core
 
 # RPMB daemon
-service rpmbd /system/bin/rpmbd
+service rpmbd /vendor/bin/rpmbd
      user root
      group drmrpc
      class main
 
 # SENSOR FRAMEWORK : starts fingerprintService
-service vcsFPService /system/bin/vcsFPService
+service vcsFPService /vendor/bin/vcsFPService
     class late_start
     user system
     group system
@@ -621,26 +621,26 @@ service vcsFPService /system/bin/vcsFPService
 #    group system
 
 # VC daemon
-    service VC-daemon /system/bin/vcd
+    service VC-daemon /vendor/bin/vcd
     class main
     user root
     group system
 
 # SCE daemon
-#    service SCE-daemon /system/bin/sced
+#    service SCE-daemon /vendor/bin/sced
 #    class main
 #    user root
 #    group system
 
-service fuse_sdcard /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard /storage/sdcard
+service fuse_sdcard /vendor/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard /storage/sdcard
     class late_start
     disabled
-service fuse_usb1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usb1 /storage/usb1
+service fuse_usb1 /vendor/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usb1 /storage/usb1
     class late_start
     disabled
 
 # Bluetooth
-service start_hci_filter /system/bin/wcnss_filter
+service start_hci_filter /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth oem_2950  sdcard_rw
@@ -665,7 +665,7 @@ service charger /charger
     seclabel u:r:charger:s0
 
 # umount service
-service umount_service /system/bin/umount -D /preload
+service umount_service /vendor/bin/umount -D /preload
     disabled
     oneshot
 
@@ -683,7 +683,7 @@ service watchdogd /sbin/watchdogd 10 20
     seclabel u:r:watchdogd:s0
 
 # sem_daemon
-service sem_daemon /system/bin/sem_daemon
+service sem_daemon /vendor/bin/sem_daemon
     class core
     user system
     group system nfc
@@ -707,7 +707,7 @@ on property:ro.multisim.simslotcount=2
     enable ril-daemon1
 
 # SecEDS
-service TvoutService_C /system/bin/bintvoutservice
+service TvoutService_C /vendor/bin/bintvoutservice
      class main
      user system
      group graphics
@@ -736,14 +736,14 @@ on property:init.svc.bootanim=stopped
     chown system system /efs/FactoryApp/tkey_light15
 
 # GPS
-service gpsd /system/bin/gpsd
+service gpsd /vendor/bin/gpsd
     class main
     user gps
     group system inet net_raw wakelock
     ioprio be 0
 
 # Secure Storage startup
-service secure_storage /system/bin/secure_storage_daemon
+service secure_storage /vendor/bin/secure_storage_daemon
     class core
     user system
     group system
@@ -756,7 +756,7 @@ on property:ro.securestorage.support=true
     restorecon_recursive /dev/.secure_storage
     start secure_storage
 
-service prepare_param /system/bin/prepare_param.sh /dev/block/platform/13540000.dwmmc0/by-name/PARAM
+service prepare_param /vendor/bin/prepare_param.sh /dev/block/platform/13540000.dwmmc0/by-name/PARAM
     class core
     user root
     group root
@@ -773,7 +773,7 @@ service swapon /sbin/sswap -s -f 1536
 
 
 # redsocks
-service redsocks /system/bin/redsocks -c /data/mptcp/redsocks.conf
+service redsocks /vendor/bin/redsocks -c /data/mptcp/redsocks.conf
     class main
     user system
     group system net_raw net_admin

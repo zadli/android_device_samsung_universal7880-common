@@ -64,6 +64,7 @@ LOCAL_SRC_FILES_64 := proprietary/vendor/lib64/egl/libGLES_mali.so
 LOCAL_SRC_FILES_32 := proprietary/vendor/lib/egl/libGLES_mali.so
 LOCAL_MULTILIB := both
 LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_SUFFIX := .so
 LOCAL_MODULE_PATH_32 := \$(\$(TARGET_2ND_ARCH_VAR_PREFIX)TARGET_OUT_VENDOR_SHARED_LIBRARIES)/egl
@@ -92,11 +93,12 @@ LOCAL_MODULE_OWNER := samsung
 LOCAL_SRC_FILES := proprietary/lib/modules/qca_cld/qca_cld_wlan.ko
 LOCAL_MULTILIB := 32
 LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_SUFFIX := .ko
 LOCAL_MODULE_PATH := \$(TARGET_OUT_SHARED_LIBRARIES)/modules/qca_cld
 
-MODULE_DIRS := \$(TARGET_OUT)/system
+MODULE_DIRS := \$(TARGET_OUT)/vendor
 \$(MODULE_DIRS):
 	@mkdir -p \$@/lib/modules/qca_cld
 

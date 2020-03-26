@@ -70,8 +70,9 @@ BOARD_BOOTIMAGE_PARTITION_SIZE     := 33554432
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 39845888
 BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 5033164800
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 25656557568
-BOARD_CACHEIMAGE_PARTITION_SIZE    := 209715200
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE  := ext4
+ENABLE_VENDOR_IMAGE := true
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_PARTITION_SIZE   := 209715200
 
 # blockdev --getbsz /dev/block/mmcblk0p9
 BOARD_FLASH_BLOCK_SIZE := 4096
@@ -81,7 +82,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Vendor separation
-TARGET_COPY_OUT_VENDOR := system/vendor
+TARGET_COPY_OUT_VENDOR := vendor
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
@@ -189,7 +190,7 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WIFI_DRIVER_MODULE_NAME := wlan
-WIFI_DRIVER_MODULE_PATH := /system/lib/modules/qca_cld/qca_cld_wlan.ko
+WIFI_DRIVER_MODULE_PATH := /vendor/lib/modules/qca_cld/qca_cld_wlan.ko
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Wifi loader
@@ -244,12 +245,18 @@ endif
 BOARD_SECCOMP_POLICY += device/samsung/universal7880-common/seccomp
 
 # SELinux
-BOARD_SEPOLICY_DIRS += device/samsung/universal7880-common/sepolicy
+# BOARD_SEPOLICY_DIRS += device/samsung/universal7880-common/sepolicy
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-    /system/lib64/libbauthserver.so|/system/vendor/lib64/libbauthtzcommon_shim.so \
-    /system/lib/libexynoscamera.so|/system/vendor/lib/libexynoscamera_shim.so \
-    /system/lib64/libexynoscamera.so|/system/vendor/lib64/libexynoscamera_shim.so \
-    /system/lib64/libstagefright.so|/system/vendor/lib64/libstagefright_shim.so \
-    /system/lib/libstagefright.so|/system/vendor/lib/libstagefright_shim.so
+    /system/lib64/libbauthserver.so|/vendor/lib64/libbauthtzcommon_shim.so \
+    /system/lib/libexynoscamera.so|/vendor/lib/libexynoscamera_shim.so \
+    /system/lib64/libexynoscamera.so|/vendor/lib64/libexynoscamera_shim.so \
+    /system/lib64/libstagefright.so|/vendor/lib64/libstagefright_shim.so \
+    /system/lib/libstagefright.so|/vendor/lib/libstagefright_shim.so
+	
+# Treble
+PRODUCT_VENDOR_MOVE_ENABLED := true
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+PRODUCT_SHIPPING_API_LEVEL := 23
