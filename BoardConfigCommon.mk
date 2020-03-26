@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2017 The Lineage Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -244,7 +244,7 @@ endif
 BOARD_SECCOMP_POLICY += device/samsung/universal7880-common/seccomp
 
 # SELinux
-BOARD_SEPOLICY_DIRS += device/samsung/universal7880-common/sepolicy
+# BOARD_SEPOLICY_DIRS += device/samsung/universal7880-common/sepolicy
 
 # Shims
 TARGET_LD_SHIM_LIBS := \

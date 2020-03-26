@@ -115,12 +115,18 @@ PRODUCT_COPY_FILES += \
 
 # DRM
 PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0 \
+    android.hardware.drm@1.1 \
+    libfwdlockengine \
+    libdrmclearkeyplugin \
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.1-service.clearkey \
     android.hardware.drm@1.0-impl
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    keystore.exynos5 \
-    android.hardware.keymaster@3.0-impl
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 
 # hardware/samsung/AdvancedDisplay (MDNIE)
 PRODUCT_PACKAGES += \
@@ -128,20 +134,32 @@ PRODUCT_PACKAGES += \
 
 # Radio
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.0 \
+    android.hardware.radio@1.4 \
+    android.hardware.radio.config@1.1 \
     android.hardware.radio.deprecated@1.0 \
     libxml2 \
-    libprotobuf-cpp-full
-
-PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full \
+    rild \
     libril \
     libsecril-client \
     libsecril-client-sap \
     modemloader \
-    rild
+    rild \
+    libreference-ril
+    #android.hardware.radio@1.0 \
+    #android.hardware.radio.deprecated@1.0 \
+    #libxml2 \
+    #libprotobuf-cpp-full
 
-PRODUCT_PACKAGES += \
-    SamsungServiceMode
+#PRODUCT_PACKAGES += \
+#    libril \
+#    libsecril-client \
+#    libsecril-client-sap \
+#    modemloader \
+#    rild
+
+#PRODUCT_PACKAGES += \
+#    SamsungServiceMode
 
 # IPv6
 PRODUCT_PACKAGES += \
@@ -151,6 +169,8 @@ PRODUCT_PACKAGES += \
 
 # Versioned netutils
 PRODUCT_PACKAGES += \
+    android.system.net.netd@1.0 \
+    libandroid_net \
     netutils-wrapper-1.0
 
 # WCNSS
@@ -260,7 +280,10 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service.exynos
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service \
+    #power.universal7880
+#   android.hardware.power@1.0-service.exynos
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -272,16 +295,16 @@ PRODUCT_PACKAGES += \
     libbauthtzcommon_shim
 
 # Touch features
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samsung
+#PRODUCT_PACKAGES += \
+#    android.hardware.touch@1.0-service.samsung
 
 # Livedisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service.samsung-exynos
+#PRODUCT_PACKAGES += \
+#    android.hardware.livedisplay@2.0-service.samsung-exynos
 
 # Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
+#PRODUCT_PACKAGES += \
+#    android.hardware.trust@1.0-service
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -291,7 +314,7 @@ PRODUCT_PACKAGES += \
 # Offmode charger
 PRODUCT_PACKAGES += \
     charger_res_images \
-    lineage_charger_res_images
+    aosp_charger_res_images
 
 # USB
 PRODUCT_PACKAGES += \
@@ -303,7 +326,9 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0
+    android.hidl.base@1.0_system \
+    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0_system
 
 # System.prop
 TARGET_SYSTEM_PROP += device/samsung/universal7880-common/system.prop
