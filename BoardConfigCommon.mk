@@ -249,9 +249,8 @@ TARGET_LD_SHIM_LIBS := \
     /system/lib64/libexynoscamera.so|/vendor/lib64/libexynoscamera_shim.so \
     /system/lib64/libstagefright.so|/vendor/lib64/libstagefright_shim.so \
     /system/lib/libstagefright.so|/vendor/lib/libstagefright_shim.so
-	
+
 # Treble
 PRODUCT_VENDOR_MOVE_ENABLED := true
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 PRODUCT_FULL_TREBLE_OVERRIDE := true
-PRODUCT_SHIPPING_API_LEVEL := 23
